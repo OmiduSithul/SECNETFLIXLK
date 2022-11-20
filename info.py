@@ -12,9 +12,9 @@ def is_enabled(value, default):
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ('API_ID', '6138975'))
-API_HASH = environ('API_HASH', 'c80d9cd8fed68bf79ac00551a1c8f57b')
-BOT_TOKEN = environ('BOT_TOKEN', '5446097446:AAEv5Bn8u7Zk88lI8K_Tq5tP2KuIoX2vHFc')
+API_ID = int(environ.get('API_ID', '6138975'))
+API_HASH = environ.get('API_HASH', 'c80d9cd8fed68bf79ac00551a1c8f57b')
+BOT_TOKEN = environ.get('BOT_TOKEN', '5446097446:AAEv5Bn8u7Zk88lI8K_Tq5tP2KuIoX2vHFc')
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
@@ -26,9 +26,9 @@ ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001596815886 -1001396095544 -1001557199160 -1001519694012 -1001610844656 -1001690448036 -1001562925943 -1001135023782 -1001620200646 -1001622478032 -1001705433155 -1001742706118 -1001226345048 -1001528118653 -1001565676692 -1001673710630 -1001606367700').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
-auth_channel = environ.get('AUTH_CHANNEL', '-1001648999264')
+auth_channel = environ.get('AUTH_CHANNEL')
 auth_grp = environ.get('AUTH_GROUP')
-AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
+AUTH_CHANNEL = environ.get('AUTH_CHANNEL', '-1001648999264')
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
 
 # MongoDB information
@@ -38,20 +38,20 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Others
 DELETE_TIME = int(environ.get('DELETE_TIME', 300))
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', -1001769255656))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001769255656'))
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'TeamEvamaria')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
-SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "True")), True)
-CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", None)
+SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "True")), False)
+CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", "<code>{file_name}</code> \n\n<b>®️ ᴍᴀɪɴ ᴄʜᴀɴɴᴇʟ(https://t.me/SECL4U)</b> \n<b>®️ sᴇᴄ ʙᴏᴛs(https://t.me/SECLK)</b>")
 BATCH_FILE_CAPTION = environ.get("BATCH_FILE_CAPTION", CUSTOM_FILE_CAPTION)
-IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", "<b><i>Query: {query} \n\n✨ {title} ({year}) \n{release_date} • {runtime}min \n\nGenre: {genres}\nRating ⭐️: {rating}/10 ({votes}) \nLanguage: {languages}</i></b> \n\n「 sᴇᴄ ʙᴏᴛs 」(https://t.me/SECLK)")
+IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", "<b><i>Query: {query} \n\n✨ {title} ({year}) \n{release_date} • {runtime}min \n\nGenre: {genres} \nRating ⭐️: {rating}/10 ({votes}) \nLanguage: {languages}</i></b> \n\n<b>©️ sᴇᴄ ʙᴏᴛs(https://t.me/SECLK)</b>")
 LONG_IMDB_DESCRIPTION = is_enabled(environ.get("LONG_IMDB_DESCRIPTION", "False"), False)
 SPELL_CHECK_REPLY = is_enabled(environ.get("SPELL_CHECK_REPLY", "True"), True)
 MAX_LIST_ELM = environ.get("MAX_LIST_ELM", None)
 INDEX_REQ_CHANNEL = int(environ.get('INDEX_REQ_CHANNEL', LOG_CHANNEL))
 FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '')).split()]
-MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "False")), False)
+MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "False")), True)
 PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
 
